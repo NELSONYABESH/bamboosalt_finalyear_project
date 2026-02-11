@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bamboo Salt Verification</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #134e5e, #71b280);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 420px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #134e5e;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #71b280;
+            box-shadow: 0 0 8px rgba(113, 178, 128, 0.5);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #134e5e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0f3b46;
+            transform: scale(1.03);
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f4f9f6;
+            border-radius: 8px;
+            border-left: 5px solid #71b280;
+        }
+
+        .result p {
+            margin: 6px 0;
+        }
+
+        img {
+            display: block;
+            margin: 10px auto;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            color: #134e5e;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Consumer Batch Verification</h2>
+
+    <form method="post">
+        <label>Batch ID</label>
+        <input name="batch_id" required>
+        <button type="submit">Verify</button>
+    </form>
+
+    {% if data %}
+        <div class="result">
+            <h3>Result</h3>
+            <p><b>Batch:</b> {{ data.batch_id }}</p>
+            <p><b>Status:</b> {{ data.status }}</p>
+            <p><b>Quality:</b> {{ data.quality }}</p>
+
+            {% if data.qr %}
+                <img src="/{{ data.qr }}" width="200">
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <a href="/add_batch">➕ Add New Batch</a>
+
+</div>
+
+</body>
+</html>

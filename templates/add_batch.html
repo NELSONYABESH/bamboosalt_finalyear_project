@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Batch</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            width: 400px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2a5298;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #2a5298;
+            box-shadow: 0 0 8px rgba(42, 82, 152, 0.5);
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #2a5298;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #1e3c72;
+            transform: scale(1.03);
+        }
+
+        .success {
+            text-align: center;
+            margin-top: 10px;
+            color: green;
+            font-weight: bold;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #2a5298;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h2>Add New Batch</h2>
+
+    <form method="post">
+
+        <label>Batch ID</label>
+        <input name="batch_id" required>
+
+        <label>Cycles</label>
+        <input name="cycles" type="number" required>
+
+        <label>Temperature</label>
+        <input name="temperature" type="number" required>
+
+        <label>Sulfur (ppm)</label>
+        <input name="sulfur_ppm" step="0.01" required>
+
+        <label>pH</label>
+        <input name="pH" step="0.1" required>
+
+        <label>Ash (%)</label>
+        <input name="ash" step="0.01" required>
+
+        <label>Quality Score</label>
+        <input name="quality_score" step="0.01" required>
+
+        <button type="submit">Add Batch</button>
+
+    </form>
+
+    {% if msg %}
+        <p class="success">{{ msg }}</p>
+    {% endif %}
+
+    <a href="/">⬅ Back to Home</a>
+
+</div>
+
+</body>
+</html>
